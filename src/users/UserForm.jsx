@@ -53,10 +53,15 @@ export default function UserForm() {
 
     const userFormValidation = object({
       firstName: string().min(3).required('First Name is required'),
+      lastName: string().min(3).required('Last Name is required'),
       contactNo: string().min(10).max(10),
       email: string().email().required(),
+      dateOfBirth: string().required(),
       gender: string().required(),
       state: string().required(),
+      country: string().required(),
+      city: string().required(),
+      address: string().required(),
       hobbies: array().min(1),
     });
 
@@ -112,10 +117,10 @@ export default function UserForm() {
                     name="lastName"
                     value={form.lastName}
                     className={`form-control ${
-                      errors.lasttName ? 'is-invalid' : ''
+                      errors.lastName ? 'is-invalid' : ''
                     }`}
                   />
-                  {errors.lastame && (
+                  {errors.lastName && (
                     <div class="invalid-feedback">{errors.lastName}</div>
                   )}
                 </div>
@@ -159,9 +164,16 @@ export default function UserForm() {
                     type="date"
                     name="dateOfBirth"
                     value={form.dateOfBirth}
-                    className="form-control"
+                    className={`form-control ${
+                      errors.dateOfBirth ? 'is-invalid' : ''
+                    }`}
                   />
+                  {errors.dateOfBirth && (
+                    <div class="invalid-feedback">{errors.dateOfBirth}</div>
+                  )}
                 </div>
+
+
                 <div className="col-md-6">
                   <label className="form-label">Gender</label>
                   <div className="d-flex gap-4 py-1">
@@ -200,7 +212,9 @@ export default function UserForm() {
                 <div className="col-md-4">
                   <label className="form-label">Country</label>
                   <select
-                    className="form-select"
+                    className={`form-select ${
+                      errors.country ? 'is-invalid' : ''
+                    }`}
                     name="country"
                     onChange={handleFieldChange}
                     value={form.country}
@@ -210,6 +224,9 @@ export default function UserForm() {
                     </option>
                     <option>India</option>
                   </select>
+                  {errors.country && (
+                    <div class="invalid-feedback">{errors.country}</div>
+                  )}
                 </div>
 
                 <div className="col-md-4">
