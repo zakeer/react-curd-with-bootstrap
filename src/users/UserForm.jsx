@@ -111,8 +111,13 @@ export default function UserForm() {
                     onChange={handleFieldChange}
                     name="lastName"
                     value={form.lastName}
-                    className="form-control"
+                    className={`form-control ${
+                      errors.lasttName ? 'is-invalid' : ''
+                    }`}
                   />
+                  {errors.lastame && (
+                    <div class="invalid-feedback">{errors.lastName}</div>
+                  )}
                 </div>
 
                 <div className="col-md-6">
@@ -236,7 +241,9 @@ export default function UserForm() {
                   <label className="form-label">City</label>
                   <select
                     disabled={!form.state}
-                    className="form-select"
+                    className={`form-select ${
+                      errors.city ? 'is-invalid' : ''
+                    }`}
                     name="city"
                     onChange={handleFieldChange}
                     value={form.city}
@@ -250,6 +257,10 @@ export default function UserForm() {
                       </option>
                     ))}
                   </select>
+                  {errors.city && (
+                    <div class="invalid-feedback">{errors.city}</div>
+                  )}
+                  
                 </div>
 
                 <div className="col-12">
@@ -260,7 +271,9 @@ export default function UserForm() {
                     name="address"
                     onChange={handleFieldChange}
                     value={form.address}
-                    className="form-control"
+                    className={`form-select ${
+                      errors.address ? 'is-invalid' : ''
+                    }`}
                   />
                 </div>
 
