@@ -1,13 +1,14 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, {useContext} from 'react';
+import { EmployeeContext } from '../EmployeeContext';
 
 export default function UsersLayoutNavbar() {
+const { setSelectEmployee } = useContext(EmployeeContext);
   return (
     <nav className="navbar bg-light">
       <div className="container">
-        <Link className="btn btn-outline-success" to="/add">
+        <button className="btn btn-outline-success" onClick={() => setSelectEmployee({})}>
           Add User
-        </Link>
+        </button>
       </div>
     </nav>
   );
